@@ -19,7 +19,10 @@ function ListItem(props) {
                 {descr}  
             </div>
             <div className='list-label'>
-                <Label isActive={isActive}/>
+                <Label onAction={()=>{
+                    console.log('parant clicked')
+                }}
+                isActive={isActive}/>
                 <hr />
             </div>
         </div>
