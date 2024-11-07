@@ -1,0 +1,46 @@
+.list-tools{
+    padding: 20px;
+    margin-bottom: 50px;
+    background: rgb(226, 242, 247);
+    border: 3px solid #ceb6f1f1;
+}
+
+.list-footer{
+    font-size: 25px;
+    color: rgba(0, 0, 0, 0.953);
+    background-color: rgb(184, 171, 246);
+    text-align: center;
+    width: 150px;
+}
+
+
+
+/* .list-tools {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 0;
+} */
+
+.list-header {
+    margin-bottom: 10px;
+}
+
+.status-select {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #4fb0e0;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.status-select:focus {
+    border-color: #007bff; /* Change this to your desired focus color */
+}
+
+/* .list-footer {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #589cea;
+} */
