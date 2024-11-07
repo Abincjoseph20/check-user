@@ -1,6 +1,6 @@
 import React from "react";
-import ListItem from "./ListItem";
 import Tools from "../componets/Tools";
+import SimpleList from "./SimpleList";
 
 
 let arr =[
@@ -44,38 +44,8 @@ class List extends React.Component{
     onListChange=(evt)=>{
         // console.log(evt.target.value);
         const value = evt.target.value;
-        // basicaly this filter method is use for remove or delete the array elements.
-        // const newList = arr.filter((item)=>{
-        //     if(value === 'all'){
-        //         return true;
-        //     }
-        //     if(value === 'active'){
-        //         return item.isActive === true;
-        //     }
-        //     if(value === 'non-active'){
-        //         return item.isActive === false;
-        //     }
-        //     return false;
-        // });
-        // console.log(newList);
-
-        // arr = newList;
-        // this.setState((state)=>{     // this passing state in argumnet
-        //     return {
-        //         data: newList,
-        //     }
-        // });
-
-    //     this.setState({
-    //         data: newList,
-    //     },()=>{
-    //         console.log('after set state')  // this is a usefull case bcz it is used in network call 
-    //     }                                   // a function exicuted after we calling a network call , this will help
-    // );
-
-
-
-    // state is change the react component 
+       
+        // state is change the react component 
         this.setState({
            activeState:value
         });
@@ -122,22 +92,7 @@ class List extends React.Component{
 
             //here onAction is a props name
             <Tools onAction={this.onListChange}>  
-                <div className="app-list">
-                {
-                newList.map((obj)=>{ 
-                    return <ListItem key={obj.title} 
-                                    title={obj.title}
-                                    descr={obj.descr}
-                                    isActive={obj.isActive}
-                                    onDelete={()=>{
-                                        this.handleDelete(obj);
-                                    }}
-                                    //onDelete={this.handleDelete} // onDelete is properly passed here
-                                    /> 
-                                    //this is array itration or looping  which is used in map() method 
-                })                  //map return the list items
-                }
-            </div>
+               <SimpleList data={newList} onAction={this.handleDelete}/>
            </Tools>
         );
     } 
