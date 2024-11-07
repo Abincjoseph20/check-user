@@ -2,18 +2,22 @@ import React from "react";
 import ListItem from "./ListItem";
 import Tools from "../componets/Tools";
 
+
 let arr =[
     {
+        id:1,
         title:'october',
         descr:'bla bla bal bla bla bal',
         isActive:true
     },
     {
+        id:2,
         title:'november',
         descr:'bla bla bal bla bla bal',
         isActive:false
     },
     {
+        id:3,
         title:'december',
         descr:'bla bla bal bla bla bal',
         isActive:true
@@ -29,7 +33,8 @@ class List extends React.Component{
         super(props);
 
         this.state = {
-            data: arr // Initialize state with the original array
+            data: arr, // Initialize state with the original array
+            activeState:'all'
         };
     }
 
@@ -40,31 +45,78 @@ class List extends React.Component{
         // console.log(evt.target.value);
         const value = evt.target.value;
         // basicaly this filter method is use for remove or delete the array elements.
-        const newList = arr.filter((item)=>{
-            if(value === 'all'){
+        // const newList = arr.filter((item)=>{
+        //     if(value === 'all'){
+        //         return true;
+        //     }
+        //     if(value === 'active'){
+        //         return item.isActive === true;
+        //     }
+        //     if(value === 'non-active'){
+        //         return item.isActive === false;
+        //     }
+        //     return false;
+        // });
+        // console.log(newList);
+
+        // arr = newList;
+        // this.setState((state)=>{     // this passing state in argumnet
+        //     return {
+        //         data: newList,
+        //     }
+        // });
+
+    //     this.setState({
+    //         data: newList,
+    //     },()=>{
+    //         console.log('after set state')  // this is a usefull case bcz it is used in network call 
+    //     }                                   // a function exicuted after we calling a network call , this will help
+    // );
+
+
+
+    // state is change the react component 
+        this.setState({
+           activeState:value
+        });
+    
+    }
+    
+
+    handleDelete = (item) => {
+        console.log('delete',item);
+        const newList = this.state.data.filter((element) => element.id !== item.id);
+        this.setState({
+            data:newList,
+        });
+    }
+    
+
+
+    render(){
+
+        const {
+            data,
+            activeState
+        } = this.state;
+
+        const newList = data.filter((item)=>{
+            if(activeState === 'all'){
                 return true;
             }
-            if(value === 'active'){
+            if(activeState === 'active'){
                 return item.isActive === true;
             }
-            if(value === 'non-active'){
+            if(activeState === 'non-active'){
                 return item.isActive === false;
             }
             return false;
         });
         console.log(newList);
 
-        // arr = newList;
-        this.setState({
-            data: newList,
-        });
-    
-    }
-    
 
 
 
-    render(){
         return(
             // children props is using for access inside the child element of a componet
 
@@ -72,11 +124,15 @@ class List extends React.Component{
             <Tools onAction={this.onListChange}>  
                 <div className="app-list">
                 {
-                this.state.data.map((obj)=>{ 
+                newList.map((obj)=>{ 
                     return <ListItem key={obj.title} 
                                     title={obj.title}
                                     descr={obj.descr}
                                     isActive={obj.isActive}
+                                    onDelete={()=>{
+                                        this.handleDelete(obj);
+                                    }}
+                                    //onDelete={this.handleDelete} // onDelete is properly passed here
                                     /> 
                                     //this is array itration or looping  which is used in map() method 
                 })                  //map return the list items
