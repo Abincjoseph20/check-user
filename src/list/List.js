@@ -74,6 +74,12 @@ class List extends React.Component{
     }
 
 
+    handleAdd=(item)=>{
+        this.setState({
+            data: [item, ...this.state.data]
+        });
+    }
+
     render(){
 
         const {
@@ -102,7 +108,7 @@ class List extends React.Component{
             // children props is using for access inside the child element of a componet
 
             //here onAction is a props name
-            <Tools labelValaue={activeState} onAction={this.onListChange}>  
+            <Tools onAdd={this.handleAdd} labelValaue={activeState} onAction={this.onListChange}>  
                <SimpleList onLabelClick={this.handleLabalClcick} data={newList} onAction={this.handleDelete}/>
            </Tools>
         );

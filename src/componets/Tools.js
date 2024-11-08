@@ -1,5 +1,6 @@
 import React from "react";
 import "./Tools.css"
+import AddNew from "./AddNew";
 
 class Tools extends React.Component{
 
@@ -7,7 +8,8 @@ class Tools extends React.Component{
         const{
             children,
             onAction,
-            labelValaue
+            labelValaue,
+            onAdd,
         } = this.props;
 
         // const onlyChild = React.Children.only(children);
@@ -25,6 +27,8 @@ class Tools extends React.Component{
                         <option value="non-active">Non-Active</option>
                     </select>
                 </div>
+                <br/>
+                <AddNew onAdd={onAdd}/>
                 {children}
                 <div className="list-footer">
                     Total count is {count} 
