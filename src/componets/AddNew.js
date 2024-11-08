@@ -1,5 +1,6 @@
 import React from "react";
 import './AddNew.css'
+import AddNewList from "./AddnewList";
 
 class AddNew extends React.Component{
 
@@ -54,8 +55,6 @@ class AddNew extends React.Component{
                 isActive:isActive,
             });
     
-      
-            
             this.setState({
                 titleInput:'',
                 descrInput:'',
@@ -67,13 +66,15 @@ class AddNew extends React.Component{
 
     render(){
         return(
-            <div>
-                <input value={this.state.titleInput} onChange={this.handleChange}/>
-                <input value={this.state.descrInput} onChange={this.handleDescrChange}/>
-                <span>is active</span>
-                <input type="checkbox" checked={this.state.isActive} onChange={this.handleActiveChange} />
-                <button onClick={this.handleClick}>click</button>
-            </div>
+            <AddNewList
+            titleInput={this.state.titleInput}
+            descrInput={this.state.descrInput}
+            isActive={this.state.isActive}
+            handleChange={this.handleChange}
+            handleDescrChange={this.handleDescrChange}
+            handleActiveChange={this.handleActiveChange}
+            handleClick={this.handleClick}
+            />
         );
     }
 }
