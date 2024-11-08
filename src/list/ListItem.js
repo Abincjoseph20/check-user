@@ -4,11 +4,12 @@ import './ListItem.css';
 
 function ListItem(props) {
     console.log(props);  
-    const {
+    const { // this is props 
         title,
         descr,
         isActive,
-        onDelete
+        onDelete,
+        onLabelClick
     } = props;
     return (
         <div className='list-item'>
@@ -20,11 +21,8 @@ function ListItem(props) {
             <div className='list-descr'>
                 {descr}  
             </div>
-            <div className='list-label'>
-                <Label onAction={()=>{
-                    console.log('parant clicked')
-                }}
-                isActive={isActive}/>
+            <div  className='list-label'>
+                <Label isActive={isActive}   onAction={onLabelClick}/>
                 <hr />
             </div>
         </div>

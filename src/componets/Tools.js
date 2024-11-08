@@ -6,7 +6,8 @@ class Tools extends React.Component{
     render(){
         const{
             children,
-            onAction
+            onAction,
+            labelValaue
         } = this.props;
 
         // const onlyChild = React.Children.only(children);
@@ -18,7 +19,7 @@ class Tools extends React.Component{
         return(
             <div className="list-tools">
                 <div className="list-hedder">
-                    <select onChange={onAction} name="status">
+                    <select value={labelValaue} onChange={onAction} name="status">
                         <option value="all">All</option>
                         <option value="active">Active</option>
                         <option value="non-active">Non-Active</option>

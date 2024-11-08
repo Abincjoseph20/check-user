@@ -4,7 +4,9 @@ import ListItem from "./ListItem";
 function SimpleList(props){
     const {
         data,
-        onAction
+        onAction,
+        onLabelClick
+
     } = props;
     return(
         <div className="app-list">
@@ -14,6 +16,7 @@ function SimpleList(props){
                                 title={obj.title}
                                 descr={obj.descr}
                                 isActive={obj.isActive}
+                                onLabelClick={onLabelClick}
                                 onDelete={()=>{
                                     onAction(obj);
                                 }}
